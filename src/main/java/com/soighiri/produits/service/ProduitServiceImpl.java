@@ -49,44 +49,38 @@ public class ProduitServiceImpl implements ProduitService {
 
 	@Override
 	public List<Produit> findByNomProduit(String nom) {
-		// TODO Auto-generated method stub
-		return null;
+		return produitRepository.findByNomProduit(nom);
 	}
 
 	@Override
 	public List<Produit> findByNomProduitContains(String nom) {
-		// TODO Auto-generated method stub
-		return null;
+		return produitRepository.findByNomProduitContains(nom);
 	}
 
 	@Override
 	public List<Produit> findByNomPrix(String nom, Double prix) {
-		// TODO Auto-generated method stub
-		return null;
+		return produitRepository.findByNomPrix(nom, prix);
 	}
 
 	@Override
 	public List<Produit> findByCategorie(Categorie categorie) {
-		// TODO Auto-generated method stub
-		return null;
+		return produitRepository.findByCategorie(categorie);
 	}
 
 	@Override
 	public List<Produit> findByOrderByNomProduitAsc() {
-		// TODO Auto-generated method stub
-		return null;
+		return produitRepository.findByOrderByNomProduitAsc();
 	}
 
 	@Override
 	public List<Produit> findByCategorieIdCat(Long idCat) {
-		// TODO Auto-generated method stub
-		return null;
+		return produitRepository.findByCategorieIdCat(idCat);
 	}
 
 	@Override
 	public List<Produit> trierProduistNomsPrix() {
-		// TODO Auto-generated method stub
-		return null;
+	
+		return produitRepository.trierProduistNomsPrix();
 	}
 
 }
