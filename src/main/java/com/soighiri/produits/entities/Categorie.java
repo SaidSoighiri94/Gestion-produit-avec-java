@@ -2,6 +2,8 @@ package com.soighiri.produits.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,6 +29,7 @@ public class Categorie {
 	private String descriptionCat;
 	
 	@OneToMany(mappedBy ="categorie") // Association un a plusieur via le champs categorie entre produit et categorie
+	@JsonIgnore
 	private List<Produit> produits; // ceci veu dire que dans une categorie il y a une collection de produits
 	
 	// Creation d'un constructeru par defaut 
