@@ -37,10 +37,9 @@ public class ProduitRestController {
 	} 
 	
 	//Ajout de la methode qui permet de modifier un produit .
-	@GetMapping( value="/updateProduit")
+	@PutMapping( value="/updateProduit")
 	//@RequestMapping(method = RequestMethod.PUT). on peut aussi ecrire comme ca 
 	public Produit updateProduit(@RequestBody Produit produit) {
-		produitService.updateProduit(produit);
 		return produitService.updateProduit(produit);
 	}
 	
