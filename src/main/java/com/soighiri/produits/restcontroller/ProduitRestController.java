@@ -42,11 +42,18 @@ public class ProduitRestController {
 	public Produit updateProduit(@RequestBody Produit produit) {
 		return produitService.updateProduit(produit);
 	}
+
 	
 	//Methode permettant la supresssion d'un Porduit
 	//@PostMapping(value = "/delete/{idProduit}")on peut ecrire comme ca aussi.
 	@RequestMapping(value = "/delete/{idProduit}",method = RequestMethod.DELETE)
 	public void deleteProduit(@PathVariable(name ="idProduit") Long idProduit) {
 		produitService.deleteProduitById(idProduit);
+	}
+
+	// Methode permettant d'afficher un produit selon sa categorie
+	@RequestMapping(value = "/prodduitCat/{idCat}",method = RequestMethod.GET)
+	public List<Produit> getProduitByCatId(@PathVariable(name = "idCat") Long idCat){
+		return produitService.findByCategorieIdCat(idCat);
 	}
 }
