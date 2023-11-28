@@ -19,7 +19,7 @@ public class ProduitRestController {
 	//Pour creer un web service permettant d'afficher tous les produit 
 	//Pour specifier la nature de la methode 
 	@RequestMapping(method = RequestMethod.GET)
-	//@GetMapping("/listProdui") on aurait pu ecrire ca 
+	//@GetMapping("/listProduit") on aurait pu ecrire ca 
 	
 	public List<Produit> getAllProduits(){
 		return produitService.geAllProduits();
@@ -35,6 +35,14 @@ public class ProduitRestController {
 	public Produit creatProduit(@RequestBody Produit produit) {
 		return produitService.saveProduit(produit);
 	} 
+	
+	//Ajout de la methode qui permet de modifier un produit .
+	@GetMapping( value="/updateProduit")
+	//@RequestMapping(method = RequestMethod.PUT). on peut aussi ecrire comme ca 
+	public Produit updateProduit(@RequestBody Produit produit) {
+		produitService.updateProduit(produit);
+		return produitService.updateProduit(produit);
+	}
 	
 
 }
