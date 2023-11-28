@@ -43,5 +43,10 @@ public class ProduitRestController {
 		return produitService.updateProduit(produit);
 	}
 	
-
+	//Methode permettant la supresssion d'un Porduit
+	//@PostMapping(value = "/delete/{idProduit}")on peut ecrire comme ca aussi.
+	@RequestMapping(value = "/delete/{idProduit}",method = RequestMethod.DELETE)
+	public void deleteProduit(@PathVariable(name ="idProduit") Long idProduit) {
+		produitService.deleteProduitById(idProduit);
+	}
 }
