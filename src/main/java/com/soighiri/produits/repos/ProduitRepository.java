@@ -8,7 +8,9 @@ import org.springframework.data.repository.query.Param;
 
 import com.soighiri.produits.entities.Categorie;
 import com.soighiri.produits.entities.Produit;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+@RepositoryRestResource(path = "rest")
 public interface ProduitRepository extends JpaRepository<Produit, Long> {
 
 	// Methode pour les produit qui va retourner une liste de produit 

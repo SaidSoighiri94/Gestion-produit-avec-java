@@ -52,7 +52,7 @@ public class ProduitRestController {
 	}
 
 	// Methode permettant d'afficher un produit selon sa categorie
-	@RequestMapping(value = "/prodduitCat/{idCat}",method = RequestMethod.GET)
+	@RequestMapping(value = "/produitCat/{idCat}",method = RequestMethod.GET)
 	public List<Produit> getProduitByCatId(@PathVariable(name = "idCat") Long idCat){
 		return produitService.findByCategorieIdCat(idCat);
 	}
