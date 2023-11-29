@@ -2,6 +2,7 @@ package com.soighiri.produits.restcontroller;
 
 import java.util.List;
 
+import com.soighiri.produits.dto.ProduitDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.soighiri.produits.entities.Produit;
@@ -21,18 +22,18 @@ public class ProduitRestController {
 	@RequestMapping(method = RequestMethod.GET)
 	//@GetMapping("/listProduit") on aurait pu ecrire ca 
 	
-	public List<Produit> getAllProduits(){
+	public List<ProduitDto> getAllProduits(){
 		return produitService.geAllProduits();
 	}
 	
 	// Pour creer un web service permettant d'afficher un seul produit 
 	@GetMapping("/{idProduit}")
-	public Produit getProduitById(@PathVariable(name = "idProduit") Long idProduit) {
+	public ProduitDto getProduitById(@PathVariable(name = "idProduit") Long idProduit) {
 		return produitService.getProduit(idProduit);
 	}
 	//methode pour ajouter un produit 
 	@PostMapping("/addProduit")
-	public Produit creatProduit(@RequestBody Produit produit) {
+	public ProduitDto creatProduit(@RequestBody Produit produit) {
 		return produitService.saveProduit(produit);
 	} 
 	

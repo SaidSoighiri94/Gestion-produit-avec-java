@@ -53,7 +53,7 @@ public class Produit {
 	public void setPrixProduit(Double prixProduit) {
 		this.prixProduit = prixProduit;
 	}
-	public java.sql.Date getDateCreation() {
+	public Date getDateCreation() {
 		return dateCreation;
 	}
 	public void setDateCreation(Date dateCreation) {
