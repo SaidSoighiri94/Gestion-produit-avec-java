@@ -17,5 +17,8 @@ public class ProduitDto {
     private String nomProduit;
     private Double prixProduit;
     private Date dateCreation;
-    private Categorie categorie;
+
+    // Si on veut simplement le nom de la categorie on fait
+    private String nomCat;
+    //private Categorie categorie;
 }
