@@ -17,7 +17,7 @@ public interface ProduitService {
 	 */
 	
 	//  Methode d'ajout d'un produit
-	ProduitDto saveProduit(Produit p);
+	ProduitDto saveProduit(ProduitDto produitDto);
 
 	// Afficher un produit par son id
 	ProduitDto getProduit(Long id);
@@ -26,7 +26,7 @@ public interface ProduitService {
 	List<ProduitDto> geAllProduits();
 	 
 	 // Modifier un produit
-	 Produit updateProduit(Produit p);
+	 ProduitDto updateProduit(ProduitDto produitDto);
 	 
 	 // supression d'un produit
 	 void deleteProduit(Produit p);

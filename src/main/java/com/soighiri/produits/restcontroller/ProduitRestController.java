@@ -33,15 +33,15 @@ public class ProduitRestController {
 	}
 	//methode pour ajouter un produit 
 	@PostMapping("/addProduit")
-	public ProduitDto creatProduit(@RequestBody Produit produit) {
-		return produitService.saveProduit(produit);
+	public ProduitDto creatProduit(@RequestBody ProduitDto produitDto) {
+		return produitService.saveProduit(produitDto);
 	} 
 	
 	//Ajout de la methode qui permet de modifier un produit .
 	@PutMapping( value="/updateProduit")
-	//@RequestMapping(method = RequestMethod.PUT). on peut aussi ecrire comme ca 
-	public Produit updateProduit(@RequestBody Produit produit) {
-		return produitService.updateProduit(produit);
+	//@RequestMapping( value = "/updateProduit",method = RequestMethod.PUT). on peut aussi ecrire comme ca
+	public ProduitDto updateProduit(@RequestBody ProduitDto produitDto) {
+		return produitService.updateProduit(produitDto);
 	}
 
 	

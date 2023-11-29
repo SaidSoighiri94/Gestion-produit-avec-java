@@ -17,13 +17,13 @@ public class ProduitServiceImpl implements ProduitService {
 	@Autowired
 	ProduitRepository produitRepository;
 	@Override
-	public ProduitDto saveProduit(Produit p) {
-		return convertEntityToDto(produitRepository.save(p)) ;
+	public ProduitDto saveProduit(ProduitDto produitDto) {
+		return convertEntityToDto(produitRepository.save(convertDtoToEntity(produitDto)));
 	}
 
 	@Override
-	public Produit updateProduit(Produit p) {
-		return produitRepository.save(p);
+	public ProduitDto updateProduit(ProduitDto produitDto) {
+		return convertEntityToDto(produitRepository.save(convertDtoToEntity(produitDto)));
 	}
 
 	@Override
