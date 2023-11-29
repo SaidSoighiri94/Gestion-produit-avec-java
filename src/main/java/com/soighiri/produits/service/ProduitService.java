@@ -2,6 +2,7 @@ package com.soighiri.produits.service;
 
 import java.util.List;
 
+import com.soighiri.produits.dto.ProduitDto;
 import org.springframework.data.repository.query.Param;
 
 import com.soighiri.produits.entities.Categorie;
@@ -9,10 +10,20 @@ import com.soighiri.produits.entities.Produit;
 
 public interface ProduitService {
 	
-	// Dans cette interface on colle les methodes du crud puis on les import 
+	// Dans cette interface on colle les methodes du crud puis on les implemente
+
+	/*Modification des 3 methodes suivants(saveProduit(Produit p),(getProduit(Produit p)et getAllProduits())
+	 pour qu'il retournent des ProduitDto au lieu de l'entite Produit
+	 */
 	
-	// Ajouter un methode
-	Produit saveProduit(Produit p);
+	//  Methode d'ajout d'un produit
+	ProduitDto saveProduit(Produit p);
+
+	// Afficher un produit par son id
+	ProduitDto getProduit(Long id);
+
+	// Lister tous les produits
+	List<ProduitDto> geAllProduits();
 	 
 	 // Modifier un produit
 	 Produit updateProduit(Produit p);
@@ -21,11 +32,7 @@ public interface ProduitService {
 	 void deleteProduit(Produit p);
 	 void  deleteProduitById(Long id);  // Par son id 
 	 
-	 // Afficher un produit par son id
-	 Produit getProduit(Long id);
-	 
-	 // Lister tous les produits
-	 List<Produit> geAllProduits();
+
 	 
 	// Cette methode sert a chercher un produit par son nom
 	List<Produit> findByNomProduit(String nom);
@@ -42,6 +49,8 @@ public interface ProduitService {
 	List<Produit> findByCategorieIdCat(Long idCat);
 	
 	List<Produit> trierProduistNomsPrix();
+	ProduitDto convertEntityToDto(Produit p);
+	Produit convertDtoToEntity(ProduitDto produitDto);
 
 
 		

@@ -1,7 +1,9 @@
 package com.soighiri.produits.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import com.soighiri.produits.dto.ProduitDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +17,8 @@ public class ProduitServiceImpl implements ProduitService {
 	@Autowired
 	ProduitRepository produitRepository;
 	@Override
-	public Produit saveProduit(Produit p) {
-		return produitRepository.save(p);
+	public ProduitDto saveProduit(Produit p) {
+		return convertEntityToDto(produitRepository.save(p)) ;
 	}
 
 	@Override
@@ -37,14 +39,17 @@ public class ProduitServiceImpl implements ProduitService {
 	}
 
 	@Override
-	public Produit getProduit(Long id) {
-		return produitRepository.findById(id).get();
+	public ProduitDto getProduit(Long id) {
+		return convertEntityToDto(produitRepository.findById(id).get());
 	}
 
 	@Override
-	public List<Produit> geAllProduits() {
+	//Pour cette Methode nous allons utiliser les Stream pour la conversion en DTO
+	public List<ProduitDto> geAllProduits() {
 		
-		return produitRepository.findAll();
+		return produitRepository.findAll().stream()
+				.map(this::convertEntityToDto)
+				.collect(Collectors.toList());
 	}
 
 	@Override
@@ -81,6 +86,33 @@ public class ProduitServiceImpl implements ProduitService {
 	public List<Produit> trierProduistNomsPrix() {
 	
 		return produitRepository.trierProduistNomsPrix();
+	}
+
+	@Override
+	//Premiere methode
+	public ProduitDto convertEntityToDto(Produit p) {
+		/* ProduitDto produitDto = new ProduitDto();
+		produitDto.setIdProduit(p.getIdProduit());
+		produitDto.setNomProduit(p.getNomProduit());
+		produitDto.setPrixProduit(p.getPrixProduit());
+		produitDto.setCategorie(p.getCategorie());
+
+		return produitDto;*/
+
+		// 2eme methode avec l'utilisation de Builder
+		return ProduitDto.builder()
+				.idProduit(p.getIdProduit())
+				.nomProduit(p.getNomProduit())
+				.prixProduit(p.getPrixProduit())
+				.dateCreation(p.getDateCreation())
+				.categorie(p.getCategorie())
+				.build();
+	}
+
+	@Override
+	//2eme methode
+	public Produit convertDtoToEntity(ProduitDto produitDto) {
+		return null;
 	}
 
 }
