@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.soighiri.produits.dto.ProduitDto;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
+import org.modelmapper.spi.MatchingStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +16,15 @@ import com.soighiri.produits.repos.ProduitRepository;
 
 @Service
 public class ProduitServiceImpl implements ProduitService {
-	
 	@Autowired
 	ProduitRepository produitRepository;
+
+	@Autowired
+	ModelMapper modelMapper;
+
+
+
+
 	@Override
 	public ProduitDto saveProduit(ProduitDto produitDto) {
 		return convertEntityToDto(produitRepository.save(convertDtoToEntity(produitDto)));
@@ -100,7 +109,7 @@ public class ProduitServiceImpl implements ProduitService {
 		return produitDto;*/
 
 		// 2eme methode avec l'utilisation de Builder
-		return ProduitDto.builder()
+		/*return ProduitDto.builder()
 				.idProduit(p.getIdProduit())
 				.nomProduit(p.getNomProduit())
 				.prixProduit(p.getPrixProduit())
@@ -109,19 +118,35 @@ public class ProduitServiceImpl implements ProduitService {
 
 				// Pareil ici aussi
 				//.nomCat(p.getCategorie().getNomCat())
-				.build();
+				.build();*/
+		// utilisatin de modelMapper
+
+		//Dire a modelmapper d'aller cher un peu plus loin dans la categorie le nomCat
+		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
+		ProduitDto produitDto = modelMapper.map(p, ProduitDto.class);
+		return produitDto;
 	}
 
 	@Override
 	//2eme methode
 	public Produit convertDtoToEntity(ProduitDto produitDto) {
-		Produit produit =new Produit();
+		//Utilisation de modelMapper
+		Produit produit = new Produit();
+		produit = modelMapper.map(produitDto, Produit.class);
+		return produit;
+
+		// Ancien Methode
+		/*Produit produit =new Produit();
 		produit.setIdProduit(produitDto.getIdProduit());
 		produit.setNomProduit(produitDto.getNomProduit());
 		produit.setPrixProduit(produitDto.getPrixProduit());
 		produit.setDateCreation(produitDto.getDateCreation());
 		produit.setCategorie(produitDto.getCategorie());
 		return produit;
+
+		 */
+
 	}
+
 
 }
