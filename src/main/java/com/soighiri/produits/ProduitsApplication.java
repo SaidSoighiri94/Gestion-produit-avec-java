@@ -18,7 +18,7 @@ public class ProduitsApplication implements CommandLineRunner {
 		SpringApplication.run(ProduitsApplication.class, args);
 	}
 
-	//Implementation de la mmethode permettant d'afficher les Ids des produit avec l'utilisation @RepositoryRestResource
+	//Implementation de la methode permettant d'afficher les Ids des produit avec l'utilisation @RepositoryRestResource
 	@Override
 	public void run(String... args) throws Exception {
 	repositoryRestConfiguration.exposeIdsFor(Produit.class);
