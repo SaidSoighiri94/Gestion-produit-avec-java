@@ -105,17 +105,23 @@ public class ProduitServiceImpl implements ProduitService {
 				.nomProduit(p.getNomProduit())
 				.prixProduit(p.getPrixProduit())
 				.dateCreation(p.getDateCreation())
-				//.categorie(p.getCategorie())
+				.categorie(p.getCategorie())
 
 				// Pareil ici aussi
-				.nomCat(p.getCategorie().getNomCat())
+				//.nomCat(p.getCategorie().getNomCat())
 				.build();
 	}
 
 	@Override
 	//2eme methode
 	public Produit convertDtoToEntity(ProduitDto produitDto) {
-		return null;
+		Produit produit =new Produit();
+		produit.setIdProduit(produitDto.getIdProduit());
+		produit.setNomProduit(produitDto.getNomProduit());
+		produit.setPrixProduit(produitDto.getPrixProduit());
+		produit.setDateCreation(produitDto.getDateCreation());
+		produit.setCategorie(produitDto.getCategorie());
+		return produit;
 	}
 
 }

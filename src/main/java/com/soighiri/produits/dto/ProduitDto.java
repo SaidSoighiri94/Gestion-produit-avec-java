@@ -19,6 +19,6 @@ public class ProduitDto {
     private Date dateCreation;
 
     // Si on veut simplement le nom de la categorie on fait
-    private String nomCat;
-    //private Categorie categorie;
+    // private String nomCat;
+    private Categorie categorie;
 }
