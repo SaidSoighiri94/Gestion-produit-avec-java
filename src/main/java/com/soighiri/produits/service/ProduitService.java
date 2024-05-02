@@ -20,7 +20,7 @@ public interface ProduitService {
 	ProduitDto saveProduit(ProduitDto produitDto);
 
 	// Afficher un produit par son id
-	ProduitDto getProduit(Long id);
+	ProduitDto getProduit(Long idProduit);
 
 	// Lister tous les produits
 	List<ProduitDto> geAllProduits();
@@ -30,7 +30,7 @@ public interface ProduitService {
 	 
 	 // supression d'un produit
 	 void deleteProduit(Produit p);
-	 void  deleteProduitById(Long id);  // Par son id 
+	 void  deleteProduitById(Long idProduit);  // Par son id
 	 
 
 	 

@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.*;
 import com.soighiri.produits.entities.Produit;
 import com.soighiri.produits.service.ProduitService;
 
+
 @RestController
 @RequestMapping(value = "/api")
 @CrossOrigin
-
 
 public class ProduitRestController {
 	@Autowired
@@ -19,8 +19,8 @@ public class ProduitRestController {
 	
 	//Pour creer un web service permettant d'afficher tous les produit 
 	//Pour specifier la nature de la methode 
-	@RequestMapping(method = RequestMethod.GET)
-	//@GetMapping("/listProduit") on aurait pu ecrire ca 
+	// @RequestMapping(method = RequestMethod.GET) on aurait pu ecrire ca, ancienne version
+	@GetMapping("/listProduit") 
 	
 	public List<ProduitDto> getAllProduits(){
 		return produitService.geAllProduits();
@@ -33,6 +33,7 @@ public class ProduitRestController {
 	}
 	//methode pour ajouter un produit 
 	@PostMapping("/addProduit")
+	//@RequestMapping( method = RequestMethod.POST)
 	public ProduitDto creatProduit(@RequestBody ProduitDto produitDto) {
 		return produitService.saveProduit(produitDto);
 	} 
@@ -46,8 +47,8 @@ public class ProduitRestController {
 
 	
 	//Methode permettant la supresssion d'un Porduit
-	//@PostMapping(value = "/delete/{idProduit}")on peut ecrire comme ca aussi.
-	@RequestMapping(value = "/delete/{idProduit}",method = RequestMethod.DELETE)
+	@DeleteMapping(value = "/delete/{idProduit}") //on peut ecrire comme ca aussi.
+	//@RequestMapping(value = "/delete/{idProduit}",method = RequestMethod.DELETE)
 	public void deleteProduit(@PathVariable(name ="idProduit") Long idProduit) {
 		produitService.deleteProduitById(idProduit);
 	}

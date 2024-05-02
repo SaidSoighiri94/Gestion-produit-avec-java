@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Produits</title>
+</head>
+
+<body>
+	<!-- header-->
+	<header>
+
+	</header>
+	<!-- main-->
+	<main>
+		<h1>Liste des produits</h1>
+
+		<!-- Utilisation de Thymeleaf pour afficher la liste des produits -->
+		<div th:each="produit : ${lesProduit}">
+			<p th:text="${produit.nomProduit}"></p>
+			<p th:text="${produit.prixProduit}"></p>
+			<!-- Ajoutez d'autres champs selon votre besoin -->
+		</div>
+
+
+	</main>
+	 <!-- foooter-->
+
+</body>
+
+</html>

@@ -42,14 +42,14 @@ public class ProduitServiceImpl implements ProduitService {
 	}
 
 	@Override
-	public void deleteProduitById(Long id) {
-		produitRepository.deleteById(id);
+	public void deleteProduitById(Long idProduit) {
+		produitRepository.deleteById(idProduit);
 		
 	}
 
 	@Override
-	public ProduitDto getProduit(Long id) {
-		return convertEntityToDto(produitRepository.findById(id).get());
+	public ProduitDto getProduit(Long idProduit) {
+		return convertEntityToDto(produitRepository.findById(idProduit).get());
 	}
 
 	@Override
