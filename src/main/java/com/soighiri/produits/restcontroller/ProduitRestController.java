@@ -58,4 +58,10 @@ public class ProduitRestController {
 	public List<Produit> getProduitByCatId(@PathVariable(name = "idCat") Long idCat){
 		return produitService.findByCategorieIdCat(idCat);
 	}
+	
+	//Methode permettant de chercher un produit par son nom
+	@GetMapping(value = "/produitByName/{nomProduit}")
+	public List<Produit> findByNomProduitContaints(@PathVariable("nomProduit") String nomProduit){
+		return produitService.findByNomProduitContains(nomProduit);
+	}
 }

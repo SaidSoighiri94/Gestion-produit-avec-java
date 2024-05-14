@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import com.soighiri.produits.entities.Categorie;
 
 
-@RepositoryRestResource(path="cat")     // Utilisation du SpringDataRest 
-@CrossOrigin("htt://localhost:4200/")   //Pour autoriser angular a acceder cette resource 
+@RepositoryRestResource(path = "cat")     // Utilisation du SpringDataRest 
+@CrossOrigin  //Pour autoriser angular a acceder cette resource 
 public interface CategorieRepository extends JpaRepository<Categorie, Long>{
 
 }
