@@ -33,22 +33,19 @@ public class ProduitRestController {
 	}
 	//methode pour ajouter un produit 
 	@PostMapping("/addProduit")
-	//@RequestMapping( method = RequestMethod.POST)
 	public ProduitDto creatProduit(@RequestBody ProduitDto produitDto) {
 		return produitService.saveProduit(produitDto);
 	} 
 	
 	//Ajout de la methode qui permet de modifier un produit .
 	@PutMapping( value="/updateProduit")
-	//@RequestMapping( value = "/updateProduit",method = RequestMethod.PUT). on peut aussi ecrire comme ca
 	public ProduitDto updateProduit(@RequestBody ProduitDto produitDto) {
 		return produitService.updateProduit(produitDto);
 	}
 
 	
 	//Methode permettant la supresssion d'un Porduit
-	@DeleteMapping(value = "/delete/{idProduit}") //on peut ecrire comme ca aussi.
-	//@RequestMapping(value = "/delete/{idProduit}",method = RequestMethod.DELETE)
+	@DeleteMapping(value = "/delete/{idProduit}")
 	public void deleteProduit(@PathVariable(name ="idProduit") Long idProduit) {
 		produitService.deleteProduitById(idProduit);
 	}
