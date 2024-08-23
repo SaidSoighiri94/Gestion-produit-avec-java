@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,6 +31,12 @@ public class CategorieRestController {
 	@GetMapping(value = "/{idCat}")
 	 public Categorie getCategorieById(@PathVariable("idCat") Long idCat) {
 		return categorieRepository.findById(idCat).get();
+	}
+	
+	//Ajouter une categorie 
+	@PostMapping(value = "/addCategore")
+	public Categorie addCategorie(@RequestBody Categorie categorie) {
+		return categorieRepository.save(categorie);
 	}
 
 }
