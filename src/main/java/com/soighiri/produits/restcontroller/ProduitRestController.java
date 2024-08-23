@@ -27,7 +27,7 @@ public class ProduitRestController {
 	}
 	
 	// Pour creer un web service permettant d'afficher un seul produit 
-	@GetMapping("/{idProduit}")
+	@GetMapping("/getById/{idProduit}")
 	public ProduitDto getProduitById(@PathVariable(name = "idProduit") Long idProduit) {
 		return produitService.getProduit(idProduit);
 	}
