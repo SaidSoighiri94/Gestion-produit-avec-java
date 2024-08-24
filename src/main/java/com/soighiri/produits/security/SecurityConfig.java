@@ -1,5 +1,6 @@
 package com.soighiri.produits.security;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -8,6 +9,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+
+import java.util.Collections;
 
 @Configuration
 @EnableWebSecurity
@@ -18,6 +23,20 @@ public class SecurityConfig {
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
                 .csrf(csrf -> csrf.disable())
+
+                //Ajout du cors
+                .cors(cors -> cors.configurationSource(new CorsConfigurationSource() {
+                    @Override
+                    public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
+                        CorsConfiguration corsConfiguration = new CorsConfiguration();
+
+                        corsConfiguration.setAllowedOrigins(Collections.singletonList("http://localhost:4200"));
+                        corsConfiguration.setAllowedMethods(Collections.singletonList("*"));
+                        corsConfiguration.setAllowedHeaders(Collections.singletonList("*"));
+                        corsConfiguration.setAllowedHeaders(Collections.singletonList("Authorization"));
+                        return corsConfiguration;
+                    }
+                }))
                 .authorizeHttpRequests( requests ->
                         requests.requestMatchers("/api/listProduit").hasAnyAuthority("ADMIN","USER")
                                 .requestMatchers(HttpMethod.GET,"/api/**").hasAnyAuthority("ADMIN","USER")

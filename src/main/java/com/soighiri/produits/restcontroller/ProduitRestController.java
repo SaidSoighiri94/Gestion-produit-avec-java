@@ -17,8 +17,7 @@ public class ProduitRestController {
 	@Autowired
 	ProduitService produitService;
 	
-	//Pour creer un web service permettant d'afficher tous les produit 
-	//Pour specifier la nature de la methode 
+	//Pour creer un web service permettant d'afficher tous les produit
 	// @RequestMapping(method = RequestMethod.GET) on aurait pu ecrire ca, ancienne version
 	@GetMapping("/listProduit") 
 	
