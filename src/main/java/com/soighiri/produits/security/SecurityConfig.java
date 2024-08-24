@@ -15,11 +15,12 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.sessionManagement( session ->
-                session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS.STATELESS))
+                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests( requests ->
-                        requests.requestMatchers("/api/listProduit/**").hasAnyAuthority("ADMIN","USER")
-                                .requestMatchers(HttpMethod.GET,"/api/getById/**").hasAnyAuthority("ADMIN","USER")
+                        requests.requestMatchers("/api/listProduit").hasAnyAuthority("ADMIN","USER")
+                                .requestMatchers(HttpMethod.GET,"/api/**").hasAnyAuthority("ADMIN","USER")
                                 .requestMatchers(HttpMethod.POST,"/api/addProduit/**").hasAuthority("ADMIN")
                                 .requestMatchers(HttpMethod.PUT,"/api/updateProduit/**").hasAuthority("ADMIN")
                                 .requestMatchers(HttpMethod.DELETE,"/api/deleteProduit/**").hasAuthority("ADMIN")
