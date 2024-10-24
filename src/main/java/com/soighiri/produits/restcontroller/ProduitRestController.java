@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.soighiri.produits.dto.ProduitDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import com.soighiri.produits.entities.Produit;
 import com.soighiri.produits.service.ProduitService;
@@ -27,6 +28,7 @@ public class ProduitRestController {
 	
 	// Pour creer un web service permettant d'afficher un seul produit 
 	@GetMapping("/{idProduit}")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public ProduitDto getProduitById(@PathVariable(name = "idProduit") Long idProduit) {
 		return produitService.getProduit(idProduit);
 	}
