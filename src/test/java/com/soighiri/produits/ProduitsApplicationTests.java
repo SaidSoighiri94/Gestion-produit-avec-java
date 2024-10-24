@@ -17,25 +17,25 @@ class ProduitsApplicationTests {
 	
 	//Declarer un objet repository de type ProduitRepository
 	private ProduitRepository produitRepository;
-	
-	// Methode pour ajouter un nouveau produit
-	@Test
-	public void testCreateProduit() {
+
+    // Methode pour ajouter un nouveau produit
+    @Test
+    void testCreateProduit() {
 		Produit prod = new Produit("Iprimante Casio",600.300,new Date());
 		produitRepository.save(prod);
 	}
-	
-	// Methode pour lister un produit par son Id
-	@Test
-	public void testFindProduit()
+
+    // Methode pour lister un produit par son Id
+    @Test
+    void testFindProduit()
 	{
 		Produit p = produitRepository.findById(1L).get();
 		System.out.println(p);
 	}
-	
-	//Methode pour modifier un produit 
-	@Test
-	public void testUpdateProduit() {
+
+    //Methode pour modifier un produit 
+    @Test
+    void testUpdateProduit() {
 		Produit p = produitRepository.findById(6L).get();
 		p.setNomProduit("PC Toshiba");
 		p.setPrixProduit(2300.400);
@@ -43,17 +43,17 @@ class ProduitsApplicationTests {
 		
 		System.out.println(p);
 	}
-	
-	// Methode pour supprimer un produit
-	@Test
-	public void testDeleteProduit() {
+
+    // Methode pour supprimer un produit
+    @Test
+    void testDeleteProduit() {
 		produitRepository.deleteById(9L);
 	}
-	
-	
-	//Methode pour lister tous les produits
-	@Test
-	public void testFindAllProduit() {
+
+
+    //Methode pour lister tous les produits
+    @Test
+    void testFindAllProduit() {
 		
 		// On va declarer une liste des produit 
 		List<Produit> prods = produitRepository.findAll();
@@ -63,10 +63,10 @@ class ProduitsApplicationTests {
 			System.out.println(p);
 		}
 	}
-	
-	// on va tester la methode findByNomProduit()
-	@Test 
-	public void testFindProduitByNom() {
+
+    // on va tester la methode findByNomProduit()
+    @Test
+    void testFindProduitByNom() {
 		List<Produit> prods = produitRepository.findByNomProduit("PC Asus");
 		
 		// on fait une petite boucle de foreach
@@ -75,33 +75,33 @@ class ProduitsApplicationTests {
 			System.out.println(p);
 		}
 	}
-	
-	// Cette methode sert à chercher le nom qui cotient la lettre P;
-	@Test 
-	public void testFindProduitByNomContains() {
+
+    // Cette methode sert à chercher le nom qui cotient la lettre P;
+    @Test
+    void testFindProduitByNomContains() {
 		List<Produit> prods = produitRepository.findByNomProduitContains("P");
 		for(Produit p:prods) {
 			System.out.println(p);
 		}
 		
 	}
-	
-	/*** 
-	 *  Cette methode sert a afficher un produit par son nom et son prix;
-	 * Pour utiliser cette methode il faut declarer les requettes jpql @Query dans le fichier ProduitRepository
-	 */
-		@Test 
-		public void testfindProduitByNomPrix() {
+
+    /*** 
+     *  Cette methode sert a afficher un produit par son nom et son prix;
+     * Pour utiliser cette methode il faut declarer les requettes jpql @Query dans le fichier ProduitRepository
+     */
+        @Test
+    void testfindProduitByNomPrix() {
 			List<Produit> prods = produitRepository.findByNomPrix("PC Dell",1000.0);
 			for(Produit p:prods) {
 				System.out.println(p);
 			}
 			
 		}
-		
-		//Methode permettant d'afficher un produit selon sa categorie 
-		@Test 
-		public void testFindByCategorie() {
+
+    //Methode permettant d'afficher un produit selon sa categorie 
+    @Test
+    void testFindByCategorie() {
 			
 			// On cree un objet categorie 
 			Categorie cat = new Categorie();
@@ -117,10 +117,10 @@ class ProduitsApplicationTests {
 				System.out.println(p);
 			}
 		}
-		
-		//Cette methode permet de tester l'affchage d'un  produit selon l'id de sa categorie 
-		@Test
-		public void testFindByCategorieIdCategorie() {
+
+    //Cette methode permet de tester l'affchage d'un  produit selon l'id de sa categorie 
+    @Test
+    void testFindByCategorieIdCategorie() {
 			
 			//on fait une liste de produit en appelant la methode findByCategorieIdCat et on lui passe en parametre idCat
 			List<Produit> prods = produitRepository.findByCategorieIdCat(3L);
@@ -130,19 +130,19 @@ class ProduitsApplicationTests {
 				System.out.println(p);
 			}
 		}
-			
-		// Methode permettant de tester le tri des donner par leur nom
-		@Test
-		public void testFindByOrderByNomProduitAsc() {
+
+    // Methode permettant de tester le tri des donner par leur nom
+    @Test
+    void testFindByOrderByNomProduitAsc() {
 		 List<Produit> prods = produitRepository.findByOrderByNomProduitAsc();
 		 for(Produit p : prods) {
 			 System.out.println(p);
 		 }
 		}
-		
-		// Methode qui permet de tester le tri de des produit par nom et prix en ordre decroissant
-		@Test
-		public void testTrierProduitsNomsPrix() {
+
+    // Methode qui permet de tester le tri de des produit par nom et prix en ordre decroissant
+    @Test
+    void testTrierProduitsNomsPrix() {
 			List<Produit> prods = produitRepository.trierProduistNomsPrix();
 			for(Produit p : prods) {
 				System.out.println(p);

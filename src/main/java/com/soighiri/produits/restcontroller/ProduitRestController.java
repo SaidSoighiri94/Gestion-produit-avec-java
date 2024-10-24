@@ -29,7 +29,7 @@ public class ProduitRestController {
 	// Pour creer un web service permettant d'afficher un seul produit 
 	@GetMapping("/{idProduit}")
 	@PreAuthorize("hasAuthority('ADMIN')")
-	public ProduitDto getProduitById(@PathVariable(name = "idProduit") Long idProduit) {
+	public ProduitDto getProduitById(@PathVariable Long idProduit) {
 		return produitService.getProduit(idProduit);
 	}
 	//methode pour ajouter un produit 
@@ -47,19 +47,19 @@ public class ProduitRestController {
 	
 	//Methode permettant la supresssion d'un Porduit
 	@DeleteMapping(value = "/delete/{idProduit}")
-	public void deleteProduit(@PathVariable(name ="idProduit") Long idProduit) {
+	public void deleteProduit(@PathVariable Long idProduit) {
 		produitService.deleteProduitById(idProduit);
 	}
 
 	// Methode permettant d'afficher un produit selon sa categorie
-	@RequestMapping(value = "/produitCat/{idCat}",method = RequestMethod.GET)
-	public List<Produit> getProduitByCatId(@PathVariable(name = "idCat") Long idCat){
+	@GetMapping("/produitCat/{idCat}")
+	public List<Produit> getProduitByCatId(@PathVariable Long idCat){
 		return produitService.findByCategorieIdCat(idCat);
 	}
 	
 	//Methode permettant de chercher un produit par son nom
 	@GetMapping(value = "/produitByName/{nomProduit}")
-	public List<Produit> findByNomProduitContaints(@PathVariable("nomProduit") String nomProduit){
+	public List<Produit> findByNomProduitContaints(@PathVariable String nomProduit){
 		return produitService.findByNomProduitContains(nomProduit);
 	}
 }

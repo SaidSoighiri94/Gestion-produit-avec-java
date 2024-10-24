@@ -29,7 +29,7 @@ public class CategorieRestController {
 	
 	//Consulter une categorie par son Id
 	@GetMapping(value = "/{idCat}")
-	 public Categorie getCategorieById(@PathVariable("idCat") Long idCat) {
+	 public Categorie getCategorieById(@PathVariable Long idCat) {
 		return categorieRepository.findById(idCat).get();
 	}
 	

@@ -13,7 +13,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
-import java.util.Collections;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -33,10 +33,10 @@ public class SecurityConfig {
                     public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
                         CorsConfiguration corsConfiguration = new CorsConfiguration();
 
-                        corsConfiguration.setAllowedOrigins(Collections.singletonList("http://localhost:4200"));
-                        corsConfiguration.setAllowedMethods(Collections.singletonList("*"));
-                        corsConfiguration.setAllowedHeaders(Collections.singletonList("*"));
-                        corsConfiguration.setAllowedHeaders(Collections.singletonList("Authorization"));
+                        corsConfiguration.setAllowedOrigins(List.of("http://localhost:4200"));
+                        corsConfiguration.setAllowedMethods(List.of("*"));
+                        corsConfiguration.setAllowedHeaders(List.of("*"));
+                        corsConfiguration.setAllowedHeaders(List.of("Authorization"));
                         return corsConfiguration;
                     }
                 }))

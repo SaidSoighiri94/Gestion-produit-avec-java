@@ -4,7 +4,6 @@ import com.soighiri.produits.dto.ProduitDto;
 import com.soighiri.produits.entities.Produit;
 import com.soighiri.produits.service.ProduitService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,8 +16,6 @@ import java.util.List;
 public class ProduitController {
     private ProduitService produitService;
     //private CategorieService categorieService;
-    @Autowired
-
     public ProduitController(ProduitService produitService) {
         this.produitService = produitService;
     }
@@ -45,7 +42,7 @@ public class ProduitController {
     }
 
     @PostMapping(value = "/produit/createProduit")
-    public String store(@ModelAttribute("produitDto") @Valid  ProduitDto produitDto, BindingResult bindingResult){
+    public String store(@ModelAttribute @Valid  ProduitDto produitDto, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             return "admin/produit/createProduit";
         }
@@ -69,7 +66,7 @@ public class ProduitController {
     }
 
     @PostMapping(value = "/produit/edit")
-    public String update(@PathVariable Long idProduit,@ModelAttribute("produitDto") @Valid ProduitDto produitDto,BindingResult bindingResult ){
+    public String update(@PathVariable Long idProduit,@ModelAttribute @Valid ProduitDto produitDto,BindingResult bindingResult ){
         if(bindingResult.hasErrors()) {
 
         }
